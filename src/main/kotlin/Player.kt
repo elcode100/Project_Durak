@@ -1,4 +1,4 @@
-open class Spieler(private var name: String) {
+open class Player(var name: String) {
 
 
     fun welcome() {

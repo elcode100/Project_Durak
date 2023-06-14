@@ -1,27 +1,55 @@
-var CARDDECK: MutableList<String> = mutableListOf(
-    "Pik ♠\uFE0F Ass", "Pik ♠\uFE0F Koenig ", "Pik ♠\uFE0F Dame", "Pik ♠\uFE0F Bube",
-    "Pik ♠\uFE0F 10", "Pik ♠\uFE0F 9", "Pik ♠\uFE0F 8", "Pik ♠\uFE0F 7", "Pik ♠\uFE0F 6",
+var CARD_DECK: List<String> = listOf(
+    "♠\uFE0F Pik Ass",
+    "♠\uFE0F Pik König",
+    "♠\uFE0F Pik Dame",
+    "♠\uFE0F Pik Bube",
+    "♠\uFE0F Pik 10",
+    "♠\uFE0F Pik 9",
+    "♠\uFE0F Pik 8",
+    "♠\uFE0F Pik 7",
+    "♠\uFE0F Pik 6",
 
-    "Kreuz ♣\uFE0F Ass", "Kreuz ♣\uFE0F Koenig", "Kreuz ♣\uFE0F Dame", "Kreuz ♣\uFE0F Bube",
-    "Kreuz ♣\uFE0F 10", "Kreuz ♣\uFE0F 9", "Kreuz ♣\uFE0F8", "Kreuz ♣\uFE0F7", "Kreuz ♣\uFE0F6",
+    "♣\uFE0F Kreuz Ass",
+    "♣\uFE0F Kreuz König",
+    "♣\uFE0F Kreuz Dame",
+    "♣\uFE0F Kreuz Bube",
+    "♣\uFE0F Kreuz 10",
+    "♣\uFE0F Kreuz 9",
+    "♣\uFE0F Kreuz 8",
+    "♣\uFE0F Kreuz 7",
+    "♣\uFE0F Kreuz 6",
 
-    "Herz ♥\uFE0F Ass", "Herz ♥\uFE0F Koenig", "Herz ♥\uFE0F Dame", "Herz ♥\uFE0F Bube",
-    "Herz ♥\uFE0F 10", "Herz ♥\uFE0F 9", "Herz ♥\uFE0F 8", "Herz ♥\uFE0F 7", "Herz ♥\uFE0F 6",
+    "♥\uFE0F Herz Ass",
+    "♥\uFE0F Herz König",
+    "♥\uFE0F Herz Dame",
+    "♥\uFE0F Herz Bube",
+    "♥\uFE0F Herz 10",
+    "♥\uFE0F Herz 9",
+    "♥\uFE0F Herz 8",
+    "♥\uFE0F Herz 7",
+    "♥\uFE0F Herz 6",
 
-    "Karo ♦\uFE0F Ass", "Karo ♦\uFE0F Koenig", "Karo ♦\uFE0F Dame", "Karo ♦\uFE0F Bube",
-    "Karo ♦\uFE0F 10", "Karo ♦\uFE0F 9", "Karo ♦\uFE0F 8", "Karo ♦\uFE0F 7", "Karo ♦\uFE0F 6"
+    "♦\uFE0F Karo Ass",
+    "♦\uFE0F Karo König",
+    "♦\uFE0F Karo Dame",
+    "♦\uFE0F Karo Bube",
+    "♦\uFE0F Karo 10",
+    "♦\uFE0F Karo 9",
+    "♦\uFE0F Karo 8",
+    "♦\uFE0F Karo 7",
+    "♦\uFE0F Karo 6"
 )
 
-var mixedCards = Karte()
 
-
-
+var game = Game()
+var player = Player("Huan Tan")
 
 fun main() {
 
-println(mixedCards.mix())
-
+    player.welcome()
+    println()
+    println(game.mixCards())
+    println()
+    game.drawCards()
 
 }
-
-
