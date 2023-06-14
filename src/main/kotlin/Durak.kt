@@ -12,19 +12,16 @@ var CARDDECK: MutableList<String> = mutableListOf(
     "Karo ♦\uFE0F 10", "Karo ♦\uFE0F 9", "Karo ♦\uFE0F 8", "Karo ♦\uFE0F 7", "Karo ♦\uFE0F 6"
 )
 
+var mixedCards = Karte()
+
+
+
 
 fun main() {
 
-
-    println(mix())
-
+println(mixedCards.mix())
 
 
 }
 
-fun mix() {
 
-
-    CARDDECK.shuffle()
-
-}
