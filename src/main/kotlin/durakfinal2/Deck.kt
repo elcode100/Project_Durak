@@ -1,5 +1,6 @@
 package durakfinal2
 
+
 // KLASSE DECK
 class Deck {
 

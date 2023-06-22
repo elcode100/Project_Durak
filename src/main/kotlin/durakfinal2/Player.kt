@@ -1,8 +1,9 @@
 package durakfinal2
 
 
+
 // KLASSE SPIELER
-class Player(val name: String, var kontostand: Double) {
+class Player(val name: String, var balance: Double) {
     var drawnCards: MutableList<Card> = mutableListOf()
 
 

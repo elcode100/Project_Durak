@@ -1,6 +1,5 @@
 package durakfinal2
 
-
 // KLASSE KARTE
 class Card(val suit: String, val value: String) {           // SYMBOL UND WERT DER KARTE.
 

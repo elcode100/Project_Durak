@@ -18,8 +18,7 @@ package durakfinal2
 
 
 
-
-// IMPORT, UM DEN ANFANGS-ANGREIFER ZU BESTIMMEN
+// IMPORT, UM DEN ANFANGS-ANGREIFER RANDOM ZU BESTIMMEN
 import kotlin.random.Random
 
 
@@ -32,8 +31,8 @@ fun waiting() {
 
 // ZUFÄLLIGER SPIELER WIRD FÜR DEN SPIELBEGINN GENERIERT
 val players = listOf(
-    Player("\u001B[1;93mTan\u001B[0m", kontostand = accountBalancePlayer1),
-    Player("\u001B[1;36mAnna\u001B[0m", kontostand = accountBalancePlayer2)
+    Player("\u001B[1;93mTan\u001B[0m", balance = accountBalancePlayer1),
+    Player("\u001B[1;36mAnna\u001B[0m", balance = accountBalancePlayer2)
 ).shuffled(Random.Default)
 
 val player1 = players[0]

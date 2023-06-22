@@ -1,5 +1,6 @@
 package durakfinal2
 
+
 fun menu() {
 
     val reset = "\u001B[0m"
@@ -223,7 +224,7 @@ fun payOff() {
 
             println("Dein Kontostand beträgt: $accountBalancePlayer1")
             println("Wie viel möchtest du auszahlen?")
-            var inputAuszahlen1 = readln().toDouble()
+            val inputAuszahlen1 = readln().toDouble()
             accountBalancePlayer1 -= inputAuszahlen1
             println("Dein neuer Kontostand beträgt $accountBalancePlayer1")
 
@@ -240,7 +241,7 @@ fun payOff() {
 
             println("Dein Kontostand beträgt: $accountBalancePlayer2")
             println("Wie viel möchtest du auszahlen?")
-            var inputPayOff = readln().toDouble()
+            val inputPayOff = readln().toDouble()
             accountBalancePlayer2 -= inputPayOff
             println("Dein neuer Kontostand beträgt $accountBalancePlayer2")
 
