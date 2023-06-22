@@ -2,7 +2,7 @@ package durakfinal2
 
 
 // KLASSE SPIELER
-class Player(val name: String) {
+class Player(val name: String, var kontostand: Double) {
     var drawnCards: MutableList<Card> = mutableListOf()
 
 
@@ -34,8 +34,7 @@ class Player(val name: String) {
          drawnCards.add(card)
          println("$name kann die Karte [$card] nicht schlagen und muss sie aufnehmen.")
 
-         // VERBLEIBENDE KARTEN IM DECK
-         println("\nNur Angreifer zieht Karte 🫳 verbleibende Karten im Deck (${deck.deck.size})")
+
 
 
      }*/
@@ -45,7 +44,7 @@ class Player(val name: String) {
         if (deck.deck.isNotEmpty()) {
             drawnCards.add(cardAttack)
             println("$name kann die Karte [$cardAttack] nicht schlagen und muss sie aufnehmen.")
-            println("\nNur Angreifer zieht Karte 🫳 Verbleibende Karten im Deck (${deck.deck.size})")
+            println("\nNur Angreifer zieht Karte 🫳 ")  /*Verbleibende Karten im Deck (${deck.deck.size})*/
         }
         return null
 
@@ -103,10 +102,10 @@ class Player(val name: String) {
 
         }
 
-        var choice = readln().toIntOrNull()
-        while (choice == null || choice !in 1..drawnCards.size) {
+        var choice = readln().toInt()
+        while (choice !in 1..drawnCards.size) {
             println("Hast du dich vertippt? 😓 Alles gut, einfach erneut eintippen 😮‍💨")
-            choice = readln().toIntOrNull()
+            choice = readln().toInt()
 
         }
 
@@ -158,10 +157,10 @@ class Player(val name: String) {
 
         }
 
-        var choice = readln().toIntOrNull()
-        while (choice == null || choice !in 1..drawnCards.size) {
+        var choice = readln().toInt()
+        while (choice !in 1..drawnCards.size) {
             println("Hast du dich vertippt? 😓 Alles gut, einfach erneut eintippen 😮‍💨")
-            choice = readln().toIntOrNull()
+            choice = readln().toInt()
 
         }
 

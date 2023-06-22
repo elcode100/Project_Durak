@@ -1,15 +1,44 @@
 package durakfinal2
 
-// IMPORT, UM DEN ANFANGS-ANGREIFER ZU BESTIMMEN
+
+// ALLGEMEINE INFO: ES IST EINE LIGHT VERSION VON DURAK, DA NICHT ALLE REGELN EINGEBAUT SIND. WIE Z.B.
+//MEHRERE KARTEN GLEICHZEITIG SPIELEN. DIE TRUMPFKARTE WIRD AM ENDE LEIDER AUCH NICHT MEHR GESPIELT. SIE IST
+//NUR ZUFÄLLIG AUSGEWÄHLT, DAMIT MAN EIN TRUMPF IM SPIEL HAT
+
+// LEIDER GIBT ES AUCH EINIGE SPIELLOGIK-FEHLER IM LAUFE DES SPIELS UND BEI EINEM NEUSTART DES SPIELS,
+//WENN MAN SCHON EINE PARTIE GESPIELT HAT, WERDEN DIE KARTEN IRGENDWO ZWISCHENGESPEICHERT UND BEI EINEM NEUSTART
+//OHNE BEENDEN DES PROGRAMMS WERDEN MEHR ALS 6 KARTEN VERGEBEN. BEI DEM ERSTEN SPIELSTART ABER RICHTIG.
+
+//COMPUTER SPIELER WURDE LEIDER NICHT PROGRAMMIERT. WIRD ABER NOCH SPÄTER IMPLEMENTIERT
+
+//AUF JEDEN FALL...WORK IN PROGRESS :) ES WIRD AUCH NACH PROJEKT_ABSCHLUSS DADRAN WEITERGEARBEITET UND FEHLER
+//BEHOBEN, DAMIT ES DANN IN MODUL 3 PROGRAMMIERT WERDEN KANN.
+
+
+
+
+
+
 // IMPORT, UM DEN ANFANGS-ANGREIFER ZU BESTIMMEN
 import kotlin.random.Random
 
 
 fun waiting() {
 
-   Thread.sleep(1000)
+    Thread.sleep(400)
 
 }
+
+
+// ZUFÄLLIGER SPIELER WIRD FÜR DEN SPIELBEGINN GENERIERT
+val players = listOf(
+    Player("\u001B[1;93mTan\u001B[0m", kontostand = accountBalancePlayer1),
+    Player("\u001B[1;36mAnna\u001B[0m", kontostand = accountBalancePlayer2)
+).shuffled(Random.Default)
+
+val player1 = players[0]
+val player2 = players[1]
+
 
 fun game() {
 
@@ -21,9 +50,47 @@ fun game() {
 
 
 
+
+
+
+    println("Einigt euch auf auf euren Einsatz")
+    val bet = readln().toDouble()
+
+    if (bet <= accountBalancePlayer1 && bet <= accountBalancePlayer2) {
+
+        println("Der Einsatz beträgt: $bet")
+    } else {
+
+        println("Dieser Einsatz übersteigt deinen Kontostand")
+        println("[1] Mache einen neuen Einsatz")
+        println("[2] Zurück ins Hauptmenü")
+        val inputChoice = readln().toInt()
+
+        when {
+
+            inputChoice == 1 -> game()
+            inputChoice == 2 -> menu()
+            inputChoice >= 3 -> {
+                println("Oh hast du dich vertippt. Versuche es gleich nochmal ;)")
+                game()
+
+
+            }
+
+
+        }
+
+    }
+
+
+
     println("------------------------------")
     println("⭐️ DAS SPIEL DURAK BEGINNT ⭐️")
     println("------------------------------")
+
+
+
+
 
     println("\nDer Kartenstapel ♠️ ♣️ ♥️ ♦️ aus ${mixedCards.size} Karten wird gemischt...")
 
@@ -42,14 +109,7 @@ fun game() {
     println("---------------------")
 
 
-    // ZUFÄLLIGER SPIELER WIRD FÜR DEN SPIELBEGINN GENERIERT
-    val players = listOf(
-        Player("\u001B[1;93mHuan Tan\u001B[0m"),
-        Player("\u001B[1;36mAnna Nass\u001B[0m")
-    ).shuffled(Random.Default)
 
-    val player1 = players[0]
-    val player2 = players[1]
 
     for (i in 0..5) {
         player1.drawCard(cardsDeck)
@@ -81,8 +141,7 @@ fun game() {
                 // VERTEIDIGUNG ERFOLGREICH
 
 
-
-                println("\nTEST2")
+                /*println("\nTEST2 !!!!!!")*/
 
                 // VERBLEIBENDE KARTEN IM DECK
                 /*println("\nVerbleibende Karten im Deck (${cardsDeck.deck.size})")
@@ -97,17 +156,75 @@ fun game() {
                     attacker = defender
                     defender = temp
 
-                    /*if (player1.hasNoCards()) {
+                    if (player1.hasNoCards()) {
                         println("\nSpieler ${player1.name} HAT GEWONNEN! TEST1")
+
+
+                        accountBalancePlayer1 += (bet * 0.9)
+                        operatorAccount += (bet * 0.1)
+                        accountBalancePlayer2 -= bet
+                        println("Herzlichen Glückwunsch, du hast ${(bet * 1.9)} € gewonnen!")
+                        println("Möchtest du ein neues Spiel starten oder ins Hauptmenü zurückkehren")
+
+                        println(
+                            """
+                                [1]  Spiel neustarten
+                                [2]  Zurück ins Hauptmenü
+                            """.trimIndent()
+                        )
+                        val input1 = readln().toInt()
+
+                        when (input1) {
+                            1 -> {
+
+                                game()
+                            }
+
+                            2 -> {
+
+                                menu()
+
+                            }
+                        }
+
+
                     } else if (player2.hasNoCards()) {
                         println("\nSpieler ${player2.name} HAT GEWONNEN! TEST1")
+
+
+                        accountBalancePlayer2 += (bet * 0.9)
+                        operatorAccount += (bet * 0.1)
+                        accountBalancePlayer1 -= bet
+                        println("Herzlichen Glückwunsch, du hast ${(bet * 1.9)} € gewonnen!")
+                        println("Möchtest du ein neues Spiel starten oder ins Hauptmenü zurückkehren")
+
+                        println(
+                            """
+                                [1]  Spiel neustarten
+                                [2]  Zurück ins Hauptmenü
+                            """.trimIndent()
+                        )
+                        val input2 = readln().toInt()
+
+                        when (input2) {
+                            1 -> {
+
+                                game()
+                            }
+
+                            2 -> {
+
+                                menu()
+
+                            }
+                        }
+
+
                     } else {
-                        println("\nUNENTSCHIEDEN  TEST1.")
-                    }*/
+                        /*println("\nUNENTSCHIEDEN  TEST1.")*/
+                    }
 
-
-
-
+                    // WECHSEL ZWISCHEN ANGREIFER UND VERTEIDIGER
                 } else {
                     val temp = attacker
                     attacker = defender
@@ -117,10 +234,67 @@ fun game() {
 
                     if (player1.hasNoCards()) {
                         println("\nSpieler ${player1.name} HAT GEWONNEN!  TEST2")
+
+                        accountBalancePlayer1 += (bet * 0.9)
+                        operatorAccount += (bet * 0.1)
+                        accountBalancePlayer2 -= bet
+                        println("Herzlichen Glückwunsch, du hast ${(bet * 1.9)} € gewonnen!")
+                        println("Möchtest du ein neues Spiel starten oder ins Hauptmenü zurückkehren")
+
+                        println(
+                            """
+                                [1]  Spiel neustarten
+                                [2]  Zurück ins Hauptmenü
+                            """.trimIndent()
+                        )
+                        val input1 = readln().toInt()
+
+                        when (input1) {
+                            1 -> {
+
+                                game()
+                            }
+
+                            2 -> {
+
+                                menu()
+
+                            }
+                        }
+
+
                     } else if (player2.hasNoCards()) {
                         println("\nSpieler ${player2.name} HAT GEWONNEN! TEST2")
+
+                        accountBalancePlayer2 += (bet * 0.9)
+                        operatorAccount += (bet * 0.1)
+                        accountBalancePlayer1 -= bet
+                        println("Herzlichen Glückwunsch, du hast ${(bet * 1.9)} € gewonnen!")
+                        println("Möchtest du ein neues Spiel starten oder ins Hauptmenü zurückkehren")
+
+                        println(
+                            """
+                                [1]  Spiel neustarten
+                                [2]  Zurück ins Hauptmenü
+                            """.trimIndent()
+                        )
+
+                        when (readln().toInt()) {
+                            1 -> {
+
+                                game()
+                            }
+
+                            2 -> {
+
+                                menu()
+
+                            }
+                        }
+
+
                     } else {
-                        println("\nUNENTSCHIEDEN. TEST2")
+                        /*println("\nUNENTSCHIEDEN. TEST2")*/
                     }
 
                 }
@@ -156,17 +330,6 @@ fun game() {
         defender = temp
 
 
-
-
-
     }
-    if (player1.hasNoCards()) {
-        println("\nSpieler ${player1.name} HAT GEWONNEN! TEST3")
-    } else if (player2.hasNoCards()) {
-        println("\nSpieler ${player2.name} HAT GEWONNEN! TEST3")
-    } else {
-        println("\nUNENTSCHIEDEN. TEST3")
-    }
-
 
 }

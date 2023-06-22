@@ -40,6 +40,6 @@ class Deck {
 
         return remainingCards
     }
-
+//METHODE NICHT MEHR VERWENDET
 
 }
