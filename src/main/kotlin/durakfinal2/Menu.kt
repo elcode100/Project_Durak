@@ -1,5 +1,7 @@
 package durakfinal2
 
+import kotlin.system.exitProcess
+
 
 fun menu() {
 
@@ -19,7 +21,7 @@ fun menu() {
         [2]  Kontostand Abfrage
         [3]  Geld einzahlen
         [4]  Geld Auszahlen
-        [5]  Betreiber-Konto
+        [5]  Betreiber-Konto -- NUR FÜR BETREIBER DER APP SICHTBAR
         [6]  Ausloggen
     """.trimIndent()
     )
@@ -66,6 +68,7 @@ fun menu() {
         input == 6 -> {
 
             println("Ciao")
+            exitProcess(0)
 
         }
 
@@ -161,8 +164,8 @@ fun accountBalanceQuery() {
 
                 println("Dein Kontostand beträgt: $accountBalancePlayer1")
                 println("Wie viel möchtest du einzahlen?")
-                var inputEinzahlen1 = readln().toDouble()
-                accountBalancePlayer1 += inputEinzahlen1
+                var inputDeposit1 = readln().toDouble()
+                accountBalancePlayer1 += inputDeposit1
                 println("Dein neuer Kontostand beträgt $accountBalancePlayer1")
 
 
@@ -178,8 +181,8 @@ fun accountBalanceQuery() {
 
                 println("Dein Kontostand beträgt: $accountBalancePlayer2")
                 println("Wie viel möchtest du einzahlen?")
-                val inputEinzahlen2 = readln().toDouble()
-                accountBalancePlayer2 += inputEinzahlen2
+                val inputDeposit2 = readln().toDouble()
+                accountBalancePlayer2 += inputDeposit2
                 println("Dein neuer Kontostand beträgt $accountBalancePlayer2")
 
                 println("Zurück mit Enter")

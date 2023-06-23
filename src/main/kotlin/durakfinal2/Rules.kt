@@ -15,10 +15,7 @@ package durakfinal2
 //BEHOBEN, DAMIT ES DANN IN MODUL 3 PROGRAMMIERT WERDEN KANN.
 
 
-
-
-
-// IMPORT, UM DEN ANFANGS-ANGREIFER RANDOM ZU BESTIMMEN
+// IMPORT-R, UM DEN ANFANGS-ANGREIFER ZU BESTIMMEN
 import kotlin.random.Random
 
 
@@ -31,8 +28,8 @@ fun waiting() {
 
 // ZUFÄLLIGER SPIELER WIRD FÜR DEN SPIELBEGINN GENERIERT
 val players = listOf(
-    Player("\u001B[1;93mTan\u001B[0m", balance = accountBalancePlayer1),
-    Player("\u001B[1;36mAnna\u001B[0m", balance = accountBalancePlayer2)
+    Player("\u001B[1;93mTan\u001B[0m", balance = accountBalancePlayer1), // --> Konto wird zu Anna zugewiesen
+    Player("\u001B[1;36mAnna\u001B[0m", balance = accountBalancePlayer2)  // --> Konto wird zu Tan zugewiesen
 ).shuffled(Random.Default)
 
 val player1 = players[0]
@@ -126,7 +123,7 @@ fun game() {
     while (!player1.hasNoCards() && !player2.hasNoCards()) {
 
 
-        println("TEST1")
+        /*println("TEST1")*/
         if (attacker.hasNoCards() || defender.hasNoCards()) {
             break
         }
@@ -156,7 +153,7 @@ fun game() {
                     defender = temp
 
                     if (player1.hasNoCards()) {
-                        println("\nSpieler ${player1.name} HAT GEWONNEN! TEST1")
+                        println("\nSpieler ${player1.name} HAT GEWONNEN!")
 
 
                         accountBalancePlayer1 += (bet * 0.9)
@@ -188,7 +185,8 @@ fun game() {
 
 
                     } else if (player2.hasNoCards()) {
-                        println("\nSpieler ${player2.name} HAT GEWONNEN! TEST1")
+                        println("\nSpieler ${player2.name} HAT GEWONNEN!")
+
 
 
                         accountBalancePlayer2 += (bet * 0.9)
@@ -232,7 +230,7 @@ fun game() {
 
 
                     if (player1.hasNoCards()) {
-                        println("\nSpieler ${player1.name} HAT GEWONNEN!  TEST2")
+                        println("\nSpieler ${player1.name} HAT GEWONNEN!")
 
                         accountBalancePlayer1 += (bet * 0.9)
                         operatorAccount += (bet * 0.1)
@@ -263,7 +261,7 @@ fun game() {
 
 
                     } else if (player2.hasNoCards()) {
-                        println("\nSpieler ${player2.name} HAT GEWONNEN! TEST2")
+                        println("\nSpieler ${player2.name} HAT GEWONNEN!")
 
                         accountBalancePlayer2 += (bet * 0.9)
                         operatorAccount += (bet * 0.1)
